@@ -1,3 +1,3 @@
 # jiyoungkimpiano.github.io
 
-[click the link >>](jiyoungkimpiano.github.io)
+[Go to the website](https://jiyoungkimpiano.github.io)
