@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       concertItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add("show");
-        }, index * 200); // 0.2초 간격으로 각 아이템 등장
+        }, index * 400); // 0.2초 간격으로 각 아이템 등장
       });
     } else {
       resetConcertAnimation(); // 다시 페이지를 벗어나면 초기화
