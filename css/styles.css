@@ -243,12 +243,16 @@ h1 {
 
   .biography-content {
     max-width: 95%;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .biography-title {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .biography-text {
+    line-height: 100%;
   }
 }
 
