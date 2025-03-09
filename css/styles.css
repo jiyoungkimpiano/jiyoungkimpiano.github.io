@@ -160,7 +160,7 @@ h1 {
   width: 100%;
   background-image: url("../img/background.jpg");
   background-size: cover;
-  background-position: center top; /* 🎯 처음에는 배경의 위쪽 절반만 표시 */
+  background-position: left top; /* 🎯 처음에는 배경의 위쪽 절반만 표시 */
   background-repeat: no-repeat;
 }
 
@@ -168,7 +168,7 @@ h1 {
 .page2 #biography {
   width: 100%;
   background-size: cover;
-  background-position: center top; /* 🎯 아래쪽 50% 추가 표시 */
+  background-position: left bottom; /* 🎯 처음에는 배경의 위쪽 절반만 표시 */
 }
 
 .biography-container {
