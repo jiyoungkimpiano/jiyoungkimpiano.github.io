@@ -34,6 +34,32 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const biographySection = document.getElementById("biography");
+  const biographyTitle = document.querySelector(".biography-title");
+  const biographyTexts = document.querySelectorAll(".biography-text");
+
+  function resetAnimation() {
+    biographyTitle.classList.remove("show");
+    biographyTexts.forEach((text) => text.classList.remove("show"));
+  }
+
+  function handleScroll() {
+    const sectionTop = biographySection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight * 0.8) {
+      biographyTitle.classList.add("show");
+      biographyTexts.forEach((text) => text.classList.add("show"));
+    } else {
+      resetAnimation(); // 다시 페이지를 벗어나면 초기화
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll(); // 페이지 로딩 시 확인
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   const biographySection = document.getElementById("biography"); // 섹션 선택
   const biographyText = document.getElementById("biography-text");
   const biographyFull = document.getElementById("biography-full");

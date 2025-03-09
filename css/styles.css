@@ -139,6 +139,21 @@ h1 {
 }
 
 /* 📜 Biography 컨테이너 */
+/* 📌 Biography 제목 & 본문 기본 상태 (초기 숨김) */
+.biography-title,
+.biography-text {
+  opacity: 0;
+  transform: translateY(-3rem);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* 📌 화면에 나타날 때 애니메이션 실행 */
+.biography-title.show,
+.biography-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .biography-container {
   display: flex;
   flex-direction: column;
@@ -253,7 +268,7 @@ h1 {
 
   .biography-text {
     line-height: 110%;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 }
 
