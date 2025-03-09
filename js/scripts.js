@@ -92,3 +92,32 @@ document.addEventListener("DOMContentLoaded", function () {
     biographySection.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const concertSection = document.getElementById("concerts");
+  const concertItems = document.querySelectorAll(".concert-item");
+
+  function resetConcertAnimation() {
+    concertItems.forEach((item) => {
+      item.classList.remove("show");
+    });
+  }
+
+  function handleConcertScroll() {
+    const sectionTop = concertSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight * 0.8) {
+      concertItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("show");
+        }, index * 200); // 0.2초 간격으로 각 아이템 등장
+      });
+    } else {
+      resetConcertAnimation(); // 다시 페이지를 벗어나면 초기화
+    }
+  }
+
+  window.addEventListener("scroll", handleConcertScroll);
+  handleConcertScroll(); // 페이지 로딩 시 확인
+});
