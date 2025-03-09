@@ -242,7 +242,7 @@ h1 {
   }
 
   .biography-content {
-    max-width: 95%;
+    max-width: 90%;
     margin-bottom: 1.5rem;
   }
 
@@ -252,7 +252,7 @@ h1 {
   }
 
   .biography-text {
-    line-height: 100%;
+    line-height: 120%;
   }
 }
 
