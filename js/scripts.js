@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.getElementById("header");
   const textContainer = document.querySelector(".text-container");
   const imageContainer = document.querySelector(".image-container");
+  const logo = document.querySelector(".logo");
 
   // 페이지 로딩 후 프로필 이미지 애니메이션 트리거
   window.onload = function () {
@@ -13,8 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       header.classList.add("scrolled");
+      logo.src = "img/logo.png";
     } else {
       header.classList.remove("scrolled");
+      logo.src = "img/logo_white.png";
     }
   });
 

@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 3rem; /* 패딩 줄여서 높이 축소 */
+  padding: 1.5rem 2rem; /* 패딩 줄여서 높이 축소 */
   background: transparent;
   transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
   z-index: 1000;
@@ -27,6 +27,17 @@ header.scrolled {
 
 header.scrolled nav ul li a {
   color: black;
+}
+
+.logo {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+nav {
+  margin-left: 1rem;
 }
 
 nav ul {
@@ -131,7 +142,7 @@ h1 {
 /* 반응형 웹 설정 */
 @media (max-width: 768px) {
   header {
-    padding: 1.3rem 2rem;
+    padding: 0.8rem 2rem;
   }
 
   nav ul {
@@ -167,6 +178,11 @@ h1 {
 @media (min-width: 1200px) {
   header {
     padding: 2rem 5rem; /* 패딩 줄여서 높이 축소 */
+  }
+
+  .logo {
+    width: 3rem;
+    height: 3rem;
   }
 
   nav ul {
