@@ -56,8 +56,18 @@ nav ul li a {
   font-size: 1rem;
 }
 
+/* 기본 페이지 스타일 */
 .page {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 원본 내용 표시 시 페이지 크기 확장 */
+.page2 {
+  height: 200vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,6 +138,63 @@ h1 {
   opacity: 1;
 }
 
+/* 📜 Biography 컨테이너 */
+.biography-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 📌 제목 스타일 */
+.biography-title {
+  font-family: "Crimson Text", serif;
+  font-weight: bold;
+  font-size: 3rem;
+  letter-spacing: 18.5%;
+  text-align: center;
+  margin-bottom: 3rem; /* 아래 여백 추가 */
+}
+
+/* 📌 본문 내용 스타일 */
+.biography-content {
+  max-width: 60%;
+  text-align: center;
+  margin-bottom: 3rem; /* 버튼과 간격 확보 */
+}
+
+.biography-text {
+  font-family: "Crimson Text", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: #000;
+}
+
+.full-text {
+  display: none;
+}
+
+/* 📌 버튼 스타일 */
+.biography-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.biography-button img {
+  width: 8rem;
+}
+
+/* 📌 숨겨진 요소 */
+.hidden {
+  display: none;
+}
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -173,6 +240,14 @@ h1 {
     clip-path: none;
     right: auto;
   }
+
+  .biography-content {
+    max-width: 95%;
+  }
+
+  .biography-title {
+    font-size: 2.5rem;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -202,5 +277,19 @@ h1 {
     font-size: 5rem;
     font-weight: 700;
     margin: 0;
+  }
+
+  .biography-text {
+    font-size: 1.3rem;
+  }
+
+  .biography-content {
+    max-width: 40%;
+    margin-bottom: 8rem;
+  }
+
+  /* 📌 제목 스타일 */
+  .biography-title {
+    margin-bottom: 8rem; /* 아래 여백 추가 */
   }
 }
