@@ -336,18 +336,6 @@ footer.page p {
   }
 }
 
-/* ✅ 화면이 가로로 넓고, 세로가 짧을 때(예: 울트라 와이드 모니터) → 2열 배치 */
-@media (max-height: 800px) and (min-width: 900px) {
-  .concerts-list {
-    grid-template-columns: 1fr 1fr; /* 2열 배치 */
-    width: 80%; /* 가로 공간을 넓게 활용 */
-  }
-
-  .concert-item {
-    width: 90%; /* 각 아이템이 너무 커지지 않도록 */
-  }
-}
-
 /* 반응형 웹 설정 */
 @media (max-width: 767px) {
   header {
@@ -404,12 +392,6 @@ footer.page p {
 
   .concerts-title {
     font-size: 1.2rem;
-  }
-
-  .concerts-list {
-    grid-template-columns: 1fr 1fr; /* 2열 배치 */
-    width: 90%;
-    gap: clamp(1.5rem, 5vw, 3rem);
   }
 
   .concert-item {
@@ -493,5 +475,17 @@ footer.page p {
   /* 📌 제목 스타일 */
   .biography-title {
     margin-bottom: 8rem; /* 아래 여백 추가 */
+  }
+}
+
+/* ✅ 화면이 가로로 넓고, 세로가 짧을 때(예: 울트라 와이드 모니터) → 2열 배치 */
+@media (max-height: 800px) and (min-width: 900px) {
+  .concerts-list {
+    grid-template-columns: 1fr 1fr; /* 2열 배치 */
+    width: 80%; /* 가로 공간을 넓게 활용 */
+  }
+
+  .concert-item {
+    width: 90%; /* 각 아이템이 너무 커지지 않도록 */
   }
 }
