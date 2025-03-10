@@ -209,3 +209,131 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", handleConcertScroll);
   handleConcertScroll(); // 페이지 로딩 시 확인
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderWrapper = document.querySelector(".video-slider-wrapper");
+  const slider = document.querySelector(".video-slider");
+  const items = document.querySelectorAll(".video-item");
+  const mainVideo = document.getElementById("main-video-iframe");
+
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  /* -------------------- 드래그 & 스크롤 -------------------- */
+  sliderWrapper.addEventListener("mousedown", (e) => {
+    // 마우스 왼쪽 버튼일 때만 동작
+    if (e.button !== 0) return;
+    e.preventDefault(); // 클릭 시 기본 동작 방지
+
+    isDragging = true;
+    startX = e.pageX - sliderWrapper.offsetLeft;
+    scrollLeft = sliderWrapper.scrollLeft;
+    sliderWrapper.style.cursor = "grabbing";
+  });
+
+  sliderWrapper.addEventListener("mousemove", (e) => {
+    // 드래그 중이 아니면 무시
+    if (!isDragging) return;
+
+    // 만약 마우스 왼쪽 버튼이 이미 떨어졌다면 드래그 종료
+    if (e.buttons === 0) {
+      isDragging = false;
+      sliderWrapper.style.cursor = "grab";
+      return;
+    }
+
+    e.preventDefault();
+    const x = e.pageX - sliderWrapper.offsetLeft;
+    const walk = (x - startX) * 1.5; // 드래그 속도 조절
+    sliderWrapper.scrollLeft = scrollLeft - walk;
+  });
+
+  sliderWrapper.addEventListener("mouseup", () => {
+    isDragging = false;
+    sliderWrapper.style.cursor = "grab";
+    updateMainVideo();
+  });
+
+  sliderWrapper.addEventListener("mouseleave", () => {
+    // 마우스가 래퍼 밖으로 나가면 드래그 종료
+    isDragging = false;
+    sliderWrapper.style.cursor = "grab";
+  });
+
+  /* -------------------- 터치(모바일) -------------------- */
+  sliderWrapper.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - sliderWrapper.offsetLeft;
+    scrollLeft = sliderWrapper.scrollLeft;
+  });
+
+  sliderWrapper.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const x = e.touches[0].pageX - sliderWrapper.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    sliderWrapper.scrollLeft = scrollLeft - walk;
+  });
+
+  sliderWrapper.addEventListener("touchend", () => {
+    isDragging = false;
+    updateMainVideo();
+  });
+
+  /* -------------------- 썸네일 클릭 시 중앙정렬 & 큰 비디오 변경 -------------------- */
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      scrollItemToCenter(item);
+    });
+  });
+
+  function scrollItemToCenter(item) {
+    const wrapperRect = sliderWrapper.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+
+    // (썸네일 가운데) - (래퍼 가운데) = 이동해야 할 거리
+    const offsetX =
+      itemRect.left +
+      itemRect.width / 2 -
+      (wrapperRect.left + wrapperRect.width / 2);
+
+    // 부드럽게 스크롤
+    sliderWrapper.scrollBy({
+      left: offsetX,
+      behavior: "smooth",
+    });
+
+    // 일정시간 후에 메인 영상 변경
+    setTimeout(() => {
+      const videoId = item.getAttribute("data-video");
+      mainVideo.src = `https://www.youtube.com/embed/${videoId}`;
+    }, 400);
+  }
+
+  /* -------------------- 드래그 종료 시, 중앙에 가장 가까운 썸네일 반영 -------------------- */
+  function updateMainVideo() {
+    const wrapperRect = sliderWrapper.getBoundingClientRect();
+    let centerItem = null;
+    let minDiff = Infinity;
+
+    items.forEach((item) => {
+      const itemRect = item.getBoundingClientRect();
+      const diff = Math.abs(
+        itemRect.left +
+          itemRect.width / 2 -
+          (wrapperRect.left + wrapperRect.width / 2)
+      );
+      if (diff < minDiff) {
+        minDiff = diff;
+        centerItem = item;
+      }
+    });
+
+    if (centerItem) {
+      const videoId = centerItem.getAttribute("data-video");
+      mainVideo.src = `https://www.youtube.com/embed/${videoId}`;
+    }
+  }
+});

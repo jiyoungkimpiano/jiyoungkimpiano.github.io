@@ -242,8 +242,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: clamp(2rem, 5vw, 5rem);
-  margin-bottom: clamp(2rem, 5vw, 5rem);
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   background: transparent;
 }
 
@@ -260,7 +260,7 @@ h1 {
 .concerts-list {
   display: grid;
   grid-template-columns: 1fr; /* 기본적으로 1열 */
-  gap: clamp(1.5rem, 5vw, 5rem);
+  gap: clamp(3rem, 5vw, 8rem);
   width: 60%;
   justify-items: center; /* 중앙 정렬 */
 }
@@ -304,10 +304,101 @@ h1 {
 
 /* 구분선 이미지 */
 .separator {
-  width: 30%;
-  max-width: 400px;
+  width: 6rem;
   margin-bottom: 1rem;
 }
+
+/* videos 섹션 전체 */
+#videos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* rem 사용 */
+  padding-top: 3rem; /* rem 사용 */
+}
+
+/* 4:1 박스 - Videos 제목 */
+.videos-header {
+  height: 4rem;
+  aspect-ratio: 4 / 1;
+  border: 0.2rem solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: rem;
+  margin-bottom: 2rem;
+  background: transparent;
+}
+
+.videos-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: black;
+  line-height: 130%;
+  text-align: center;
+}
+
+/* 메인 큰 비디오 */
+.main-video iframe,
+.video-slider-wrapper {
+  width: 60vw;
+}
+
+.main-video iframe {
+  aspect-ratio: 16/9;
+}
+
+/* 작은 비디오 & 슬라이더 컨테이너 */
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* rem 사용 (기존 20px) */
+}
+
+/* 슬라이더 래퍼: 스크롤바 제거 + 가로 스크롤 가능 */
+.video-slider-wrapper {
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE, Edge 스크롤바 제거 */
+  scrollbar-width: none; /* Firefox 스크롤바 제거 */
+  position: relative;
+  cursor: grab;
+}
+
+/* WebKit(Chrome, Safari 등) 스크롤바 제거 */
+.video-slider-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* 실제 슬라이더 목록 */
+.video-slider {
+  display: flex;
+  gap: 2vw; /* px 대신 vw 사용 (기존 15px) */
+  /* 왼·오른쪽에 넉넉한 padding → 마지막 썸네일까지 중앙에 올 수 있음 */
+  padding: 2vh 10vw; /* px 대신 vh, vw 사용 (기존 10px 30vw) */
+  transition: transform 0.3s ease-in-out;
+  user-select: none; /* 텍스트 드래그 방지 */
+}
+
+/* 개별 썸네일 */
+.video-item {
+  flex: 0 0 auto; /* 내용 크기대로 고정 */
+  width: 20vw;
+  text-align: center;
+}
+
+.video-item img {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.video-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Swiper 기본 스타일은 swiper-bundle.min.css에서 로드 */
 
 /* footer */
 /* Footer도 .page 클래스로 처리 */
@@ -437,6 +528,17 @@ footer.page p {
     grid-template-columns: 1fr; /* 1열 배치 */
     width: 100%;
   }
+
+  /* 메인 큰 비디오 */
+  .main-video iframe,
+  .video-slider-wrapper {
+    width: 90vw;
+  }
+
+  /* 실제 슬라이더 목록 */
+  .video-slider {
+    padding: 1vh 30vw; /* px 대신 vh, vw 사용 (기존 10px 30vw) */
+  }
 }
 
 @media (min-width: 1440px) {
@@ -476,6 +578,21 @@ footer.page p {
   .biography-title {
     margin-bottom: 8rem; /* 아래 여백 추가 */
   }
+
+  .main-video iframe {
+    min-width: 40vw;
+  }
+
+  /* 메인 큰 비디오 */
+  .main-video iframe,
+  .video-slider-wrapper {
+    width: 35vw;
+  }
+
+  /* 개별 썸네일 */
+  .video-item {
+    max-width: 10vw;
+  }
 }
 
 /* ✅ 화면이 가로로 넓고, 세로가 짧을 때(예: 울트라 와이드 모니터) → 2열 배치 */
@@ -487,5 +604,20 @@ footer.page p {
 
   .concert-item {
     width: 90%; /* 각 아이템이 너무 커지지 않도록 */
+  }
+
+  .main-video iframe {
+    min-width: 40vw;
+  }
+
+  /* 메인 큰 비디오 */
+  .main-video iframe,
+  .video-slider-wrapper {
+    width: 30vw;
+  }
+
+  /* 개별 썸네일 */
+  .video-item {
+    max-width: 10vw;
   }
 }
