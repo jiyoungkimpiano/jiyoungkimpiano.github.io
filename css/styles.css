@@ -310,6 +310,8 @@ h1 {
 
 /* videos 섹션 전체 */
 #videos {
+  background-image: url("../img/bg1.png");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
