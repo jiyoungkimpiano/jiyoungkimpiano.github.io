@@ -337,3 +337,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // 기본 제출 동작 방지
+
+    const formData = new FormData(form);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const message = formData.get("message");
+
+    // 📌 이메일로 전송할 메시지 구성
+    var params = {
+      name: name,
+      email: email,
+      phone: phone || "Not Privided",
+      message: message,
+    };
+
+    // 📌 EmailJS를 사용하여 이메일 전송
+    emailjs.send("service_r0g3chv", "template_au340su", params).then(
+      function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Your message has been sent successfully!"); // 성공 메시지
+        form.reset(); // 폼 초기화
+      },
+      function (error) {
+        console.log("FAILED...", error);
+        alert("Failed to send the message. Please try again."); // 실패 메시지
+      }
+    );
+  });
+});

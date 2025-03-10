@@ -11,6 +11,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("9Fv88K2fpatD4x8v8");
+      })();
+    </script>
     <script defer src="js/scripts.js"></script>
   </head>
   <body>
@@ -219,9 +228,64 @@
         </div>
       </div>
     </section>
-
     <section id="contact" class="page">
-      <h2>Contact 페이지입니다</h2>
+      <!-- 📌 Contact 헤더 -->
+      <div class="contact-header">
+        <h2 class="contact-title">Contact</h2>
+      </div>
+
+      <!-- 📌 Contact Form -->
+      <div class="contact-container">
+        <form id="contact-form">
+          <!-- 📌 이름 입력 -->
+          <div class="input-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="ENTER YOUR NAME*"
+              required
+            />
+          </div>
+
+          <!-- 📌 이메일 입력 -->
+          <div class="input-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ENTER YOUR EMAIL*"
+              required
+            />
+          </div>
+
+          <!-- 📌 전화번호 입력 -->
+          <div class="input-group">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="PHONE NUMBER"
+            />
+          </div>
+
+          <!-- 📌 메시지 입력 -->
+          <div class="input-group">
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="YOUR MESSAGE*"
+              required
+            ></textarea>
+          </div>
+
+          <!-- 📌 제출 버튼 -->
+          <button type="submit" class="submit-btn">
+            <img src="../img/submit_btn.png" alt="Submit" />
+          </button>
+        </form>
+      </div>
     </section>
 
     <footer class="page" id="footer">

@@ -399,6 +399,92 @@ h1 {
 
 /* Swiper 기본 스타일은 swiper-bundle.min.css에서 로드 */
 
+/* 📌 Contact 페이지 */
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 📌 Contact 헤더 (4:1 비율) */
+.contact-header {
+  height: 4rem;
+  aspect-ratio: 4 / 1;
+  border: 0.2rem solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background: transparent;
+}
+
+.contact-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: black;
+  line-height: 130%;
+  text-align: center;
+}
+
+/* 📌 Contact Form 컨테이너 */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* 📌 입력 필드 그룹 */
+.input-group {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* 📌 입력 필드 기본 스타일 */
+.input-group input,
+.input-group textarea {
+  width: 24rem;
+  font-size: 0.9rem; /* 더 넓게 설정 */
+  padding: 0.8rem 0.3rem 0.8rem 1rem;
+  border: none;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  background: transparent;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+/* 📌 Placeholder 스타일 */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  font-size: 0.8rem;
+  letter-spacing: 4%;
+  font-family: "Montserrat", sans-serif;
+  color: #8b8b8b;
+}
+
+/* 📌 Submit 버튼 */
+.submit-btn {
+  padding-top: 3rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.submit-btn img {
+  width: 8rem;
+}
+
+/* 📌 Submit 버튼 호버 효과 */
+.submit-btn:hover {
+  transform: scale(1.05);
+}
+
 /* footer */
 /* Footer도 .page 클래스로 처리 */
 footer.page {
@@ -476,11 +562,13 @@ footer.page p {
     font-size: 1.1rem;
   }
 
-  .concerts-header {
+  .concerts-header,
+  .contact-header {
     height: 2rem;
   }
 
-  .concerts-title {
+  .concerts-title,
+  .contact-title {
     font-size: 1.2rem;
   }
 
@@ -499,6 +587,11 @@ footer.page p {
 
   .videos-header {
     max-width: 80vw; /* 반응형 크기 조정 */
+  }
+
+  .input-group input,
+  .input-group textarea {
+    max-width: 80vw;
   }
 }
 
@@ -550,6 +643,19 @@ footer.page p {
   /* 개별 썸네일 */
   .video-item {
     width: 30vw;
+  }
+
+  #contact {
+    padding-top: 1rem;
+  }
+
+  .contact-header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .submit-btn {
+    padding-top: 2rem;
   }
 }
 
