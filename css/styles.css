@@ -21,12 +21,13 @@ header {
 }
 
 header.scrolled {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5); /* 배경색만 50% 투명 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header.scrolled nav ul li a {
   color: black;
+  opacity: 1;
 }
 
 nav {
@@ -44,8 +45,8 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   color: white;
-  font-weight: bold;
   transition: color 0.3s;
+  font-weight: 500;
   font-size: 1rem;
 }
 
@@ -180,15 +181,15 @@ h1 {
   font-size: 3rem;
   letter-spacing: 0.2rem;
   text-align: center;
-  margin-bottom: 3rem; /* 아래 여백 추가 */
+  margin-bottom: 2rem; /* 아래 여백 추가 */
   color: white;
 }
 
 /* 📌 본문 내용 스타일 */
 .biography-content {
-  max-width: 60%;
+  max-width: 80%;
   text-align: center;
-  margin-bottom: 3rem; /* 버튼과 간격 확보 */
+  margin-bottom: 2rem; /* 버튼과 간격 확보 */
 }
 
 .biography-text {
@@ -230,7 +231,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 5rem;
+  padding-top: 2rem;
 }
 
 /* 📌 제목 컨테이너 (4:1 비율 직사각형) */
@@ -241,8 +242,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: clamp(2rem, 5vw, 5rem);
+  margin-bottom: clamp(2rem, 5vw, 5rem);
   background: transparent;
 }
 
@@ -260,8 +261,9 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: clamp(1.5rem, 5vw, 5rem);
   width: 60%;
+  grid-template-columns: 1fr; /* 기본적으로 1열 */
 }
 
 /* 개별 콘서트 아이템 */
@@ -335,13 +337,9 @@ footer.page p {
 }
 
 /* 반응형 웹 설정 */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   header {
     padding: 0.8rem 2rem;
-  }
-
-  nav {
-    margin-left: 0rem;
   }
 
   nav ul {
@@ -398,7 +396,7 @@ footer.page p {
 
   .concerts-list {
     width: 90%;
-    gap: 3.5rem;
+    gap: clamp(1.5rem, 5vw, 3rem);
   }
 
   .concert-date {
@@ -411,7 +409,33 @@ footer.page p {
   }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 430px) {
+  header {
+    padding: 1rem 1rem; /* 패딩 줄여서 높이 축소 */
+  }
+
+  nav {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .biography-content {
+    max-width: 90%;
+    margin-bottom: 0.8rem;
+  }
+
+  .biography-title {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .biography-text {
+    line-height: 110%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) {
   header {
     padding: 1.5rem 3rem; /* 패딩 줄여서 높이 축소 */
   }
@@ -440,7 +464,7 @@ footer.page p {
   }
 
   .biography-content {
-    max-width: 45%;
+    max-width: 60%;
     margin-bottom: 8rem;
   }
 

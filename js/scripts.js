@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // page2의 절댓값(문서상 위치)
       const page2Top = currentSection.offsetTop; // page2의 시작
       const page2Height = currentSection.offsetHeight; // page2의 실제 높이 (200vh)
-      const page2Half = page2Top + page2Height * (2 / 5); // page2 중앙(절반) 지점
+      const page2Half = page2Top + page2Height * (3 / 7); // page2 중앙(절반) 지점
 
       if (!isHalfScrolled) {
         // 아직 중앙까지 안 간 상태
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 0.8초 후 스크롤 잠금 해제
     setTimeout(() => {
       isScrolling = false;
-    }, 500);
+    }, 800);
   });
 });
 
