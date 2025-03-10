@@ -317,26 +317,25 @@ h1 {
   padding-top: 3rem; /* rem 사용 */
 }
 
-/* 4:1 박스 - Videos 제목 */
+/* 📌 YouTube 배너 헤더 (4:1 비율) */
 .videos-header {
-  height: 4rem;
-  aspect-ratio: 4 / 1;
-  border: 0.2rem solid black;
+  width: 23rem; /* 반응형 크기 조정 */
+  aspect-ratio: 4 / 1; /* 4:1 비율 유지 */
+  background-image: url("../img/youtube_banner.png");
+  background-size: cover; /* 배경 이미지를 가득 채움 */
+  background-position: center; /* 이미지 중앙 정렬 */
+  background-repeat: no-repeat; /* 반복 방지 */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: rem;
-  margin-bottom: 2rem;
-  background: transparent;
+  cursor: pointer; /* 마우스를 올리면 클릭 가능 표시 */
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.5);
 }
 
-.videos-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: black;
-  line-height: 130%;
-  text-align: center;
+/* 📌 클릭 시 약간 확대 효과 */
+.videos-header:hover {
+  transform: scale(1.05);
 }
 
 /* 메인 큰 비디오 */
@@ -497,6 +496,10 @@ footer.page p {
   .concert-name {
     font-size: 0.9rem;
   }
+
+  .videos-header {
+    max-width: 80vw; /* 반응형 크기 조정 */
+  }
 }
 
 @media (max-width: 430px) {
@@ -543,6 +546,11 @@ footer.page p {
   .video-slider {
     padding: 1vh 30vw; /* px 대신 vh, vw 사용 (기존 10px 30vw) */
   }
+
+  /* 개별 썸네일 */
+  .video-item {
+    width: 30vw;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -583,19 +591,15 @@ footer.page p {
     margin-bottom: 8rem; /* 아래 여백 추가 */
   }
 
-  .main-video iframe {
-    min-width: 40vw;
-  }
-
   /* 메인 큰 비디오 */
   .main-video iframe,
   .video-slider-wrapper {
-    width: 35vw;
+    width: 40vw;
   }
 
   /* 개별 썸네일 */
   .video-item {
-    max-width: 10vw;
+    max-width: 13vw;
   }
 }
 
@@ -610,18 +614,14 @@ footer.page p {
     width: 90%; /* 각 아이템이 너무 커지지 않도록 */
   }
 
-  .main-video iframe {
-    min-width: 40vw;
-  }
-
   /* 메인 큰 비디오 */
   .main-video iframe,
   .video-slider-wrapper {
-    width: 30vw;
+    width: 45vw;
   }
 
   /* 개별 썸네일 */
   .video-item {
-    max-width: 10vw;
+    max-width: 15vw;
   }
 }
