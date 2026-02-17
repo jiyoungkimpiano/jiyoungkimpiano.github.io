@@ -161,12 +161,64 @@ h1 {
   background-position: left bottom;
 }
 
+#biography::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
 .biography-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Language selector */
+.lang-selector {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  height: 24px;
+  margin-left: 10%;
+  margin-bottom: 1rem;
+  padding: 0 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  height: 24px;
+  padding: 0 0.7rem;
+  min-width: 2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  border-radius: 6px;
+  transition: all 0.2s;
+  letter-spacing: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-btn.active {
+  background: white;
+  color: #333;
+  font-weight: 600;
+  opacity: 1;
+  height: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* 📌 제목 스타일 */
@@ -196,6 +248,7 @@ h1 {
   letter-spacing: 0%;
   color: white;
 }
+
 
 .full-text {
   display: none;
@@ -258,6 +311,42 @@ h1 {
   gap: 13vh;
   width: 60%;
   justify-items: center; /* 중앙 정렬 */
+}
+
+.concerts-empty {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #666;
+}
+
+.year-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.year-nav-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: black;
+  padding: 0.3rem;
+}
+
+.year-nav-btn:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.year-nav-year {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 /* 개별 콘서트 아이템 */
@@ -632,6 +721,21 @@ footer p {
     margin-bottom: 0.8rem;
   }
 
+  .lang-selector {
+    height: 20px;
+  }
+
+  .lang-btn {
+    font-size: 0.6rem;
+    height: 20px;
+    padding: 0 0.5rem;
+    min-width: 1.6rem;
+  }
+
+  .lang-btn.active {
+    height: 26px;
+  }
+
   .biography-title {
     font-size: 2rem;
     margin-bottom: 0.8rem;
@@ -646,6 +750,15 @@ footer p {
     grid-template-columns: 1fr; /* 1열 배치 */
     width: 100%;
     gap: 10vh;
+  }
+
+  .year-nav-btn {
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+
+  .year-nav-year {
+    font-size: 1rem;
   }
 
   /* 날짜 스타일 */
